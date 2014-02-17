@@ -9,7 +9,10 @@ gulp.task('connect', connect.server({
 }));
 
 
-gulp.task('snap', function() {
+gulp.task('webshot', function() {
   return gulp.src('./Theme/*.html')
         .pipe(gulpshot({ dest:'build/',p:1337}));
 })
+
+gulp.task('shot', ['connect', 'webshot']);
+
