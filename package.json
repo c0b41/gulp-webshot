@@ -27,7 +27,7 @@
     "webshot": "~0.10.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "gulp": "~3.5.2"
+    "gulp": "~3.5.2",
+    "gulp-mocha": "~0.4.1"
   }
 }
