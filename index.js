@@ -41,7 +41,7 @@ module.exports = function(opt){
                 this.emit('error', new gutil.PluginError('gulp-htmlshot', err));
             }
 
-            gutil.log('gulp-webshot:', gutil.colors.green('✔ ') + file.relative + gutil.colors.gray(' ( Save screenshot ) '))
+            gutil.log('gulp-webshot:', gutil.colors.green('✔') + file.relative + gutil.colors.gray(' ( Save screenshot ) '))
 
             this.push(file);
 
