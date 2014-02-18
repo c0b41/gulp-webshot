@@ -3,4 +3,4 @@ node_js:
   - 0.
 before_install: npm install -g gulp
 install: npm install
-before_script: grunt shot
+before_script: gulp shot
