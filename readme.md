@@ -67,6 +67,6 @@ Type: `object`
 
 
 
-more options checkout [webshot options](https://github.com/brenden/node-webshot#optionsl).
+more options checkout [webshot options](https://github.com/brenden/node-webshot#options).
 
 

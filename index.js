@@ -6,12 +6,16 @@ var path = require("path");
 
 module.exports = function(opt){
 
-        if (!opt) {
+    if (!opt) {
             opt = {};
-        }
+     }
+
+    if (opt.p === undefined) {
+        throw new gutil.PluginError('gulp-webshot', 'please connect port')
+    }
+
 
     return through.obj(function (file, enc, cb) {
-
 
         if(!opt.p){
             this.emit('error', new gutil.PluginError('gulp-webshot', 'please connect port'));
@@ -30,24 +34,42 @@ module.exports = function(opt){
             return cb();
         }
 
+        if (file.isStream()) {
+            this.emit('error', new gutil.PluginError('gulp-webshot', 'Streaming not supported'));
+            return cb();
+        }
+
+
+
         var parsep =path.basename(file.relative);
         var name =path.basename(file.relative, '.html')
         var filename =opt.dest+'/'+name+'.png';
         var url ='http://localhost:'+opt.p+'/'+parsep;
 
-        webshot(url, filename, opt,function(err,stream) { 
 
-            if (err) {
-                this.emit('error', new gutil.PluginError('gulp-htmlshot', err));
-            }
+             webshot(url, filename, opt,function(err,stream) { 
 
-            gutil.log('gulp-webshot:', gutil.colors.green('✔') + file.relative + gutil.colors.gray(' ( Save screenshot ) '))
+                if (err) {
+                    this.emit('error', new gutil.PluginError('gulp-htmlshot', err));
+                }else{
+                    gutil.log('gulp-webshot:', gutil.colors.green('✔') + file.relative + gutil.colors.gray(' ( Save screenshot ) '))
 
-            this.push(file);
+                }
 
-            return cb();
+                
+                cb();
 
-        }.bind(this));
+            });
+
+        this.push(file);
+
+    },function(cb){
+
+        gutil.log('gulp-webshot:', gutil.colors.yellow(' Everything is fine :) '));
+       
+        cb();
+
     });
+
 };
 

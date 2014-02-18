@@ -1,12 +1,13 @@
 {
   "name": "gulp-webshot",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Webshot provides a simple API for taking webpage screenshots",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/cobaimelan/gulp-webshot"
   },
+
   "keywords": [
     "gulpplugin",
     "webshot",
@@ -27,5 +28,8 @@
   "devDependencies": {
     "gulp": "~3.5.2",
     "gulp-mocha": "~0.4.1"
-  }
+  },
+  "scripts": {
+    "test": "mocha test.js --reporter spec"
+  },
 }
