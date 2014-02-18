@@ -5,8 +5,13 @@ var fs  = require('fs');
 		
 		it('Test :1 ', function(done){
 
-			// fs.existsSync('./build/about.png');
-			
+			expect(fs.existsSync('build/about.png')).to.be.ok();
+			expect(fs.existsSync('build/index.png')).to.be.ok();
+			expect(fs.existsSync('build/portfolio.png')).to.be.ok();
+			expect(fs.existsSync('build/services.png')).to.be.ok();
+			expect(fs.existsSync('build/singleproject.png')).to.be.ok();
+			done();
+
 		});
 
-	});
+});

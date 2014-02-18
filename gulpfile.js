@@ -4,6 +4,10 @@ var
   gulpshot=require('./index.js'),
   mocha = require('gulp-mocha');
 
+
+
+
+
 gulp.task('connect', connect.server({
   root: ['Theme'],
   port: 1337
@@ -12,7 +16,11 @@ gulp.task('connect', connect.server({
 
 gulp.task('webshot', function() {
   return gulp.src('./Theme/*.html')
-        .pipe(gulpshot({ dest:'build/',p:1337}));
+        .pipe(gulpshot({ dest:'build/',p:1337}))
+        .on("error", function(err){
+        console.log(err.toString());
+        this.emit('end');
+      });
 });
 
 gulp.task('mocha', function () {

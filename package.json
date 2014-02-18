@@ -4,7 +4,7 @@
   "description": "Webshot provides a simple API for taking webpage screenshots",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "gulp mocha"
   },
   "repository": {
     "type": "git",
