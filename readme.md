@@ -1,8 +1,8 @@
-# [gulp](https://github.com/wearefractal/gulp)-webshot [![Build Status](https://travis-ci.org/cobaimelan/gulp-webshot.png?branch=master)](https://travis-ci.org/cobaimelan/gulp-webshot)
+# [gulp](https://github.com/gulpjs/gulp)-webshot  [![Build Status](https://img.shields.io/david/ayhankuru/gulp-webshot.svg?style=flat-square)](https://david-dm.org/ayhankuru/gulp-webshot)
 
 >Webshot provides a simple API for taking webpage screenshots. The module is a light wrapper around PhantomJS, which utilizes WebKit to perform the page rendering.
 
-Uses the [webshot](https://github.com/vavere/htmltidy) library.
+Uses the [webshot](https://github.com/brenden/node-webshot) library.
 
 ## İnstall
 ```bash
