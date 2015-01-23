@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/cobaimelan/gulp-webshot",
   "dependencies": {
-    "through2": "~0.4.2",
-    "gulp-util": "~2.2.20",
-    "webshot": "~0.10.1",
-    "gulp-connect": "~0.9.0"
+    "through2": "~0.6.3",
+    "gulp-util": "~3.0.2",
+    "webshot": "~0.15.3",
+    "gulp-connect": "~2.2.0"
   },
   "devDependencies": {
     "gulp": "~3.5.2",
