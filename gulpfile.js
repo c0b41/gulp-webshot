@@ -5,34 +5,20 @@ var
   mocha = require('gulp-mocha');
 
 
-gulp.task('connect', connect.server({
-  root: ['Theme'],
-  port: 1337
-}));
+gulp.task('connect', function(){
+    connect.server({
+    root: ['Theme'],
+    port: 1337
+  })
+});
 
 
-gulp.task('webshot', function(done) {
+gulp.task('webshot', function() {
   return gulp.src('./Theme/*.html')
-        .pipe(webshot({ dest:'build/',
-                        p:1337, 
-                        screenSize: {
-                        width: 1366,
-                        height: 768},
-                        shotSize: {
-                        width: 'window',
-                        height: 'all'}
-              })
-              .on("error", function(err){
-                  console.log(err.toString());
-                  this.emit('end');
-              }));
-       
-});
+        .pipe(webshot({ dest:'build/',p:1337}));
+})
 
-gulp.task('mocha', function () {
-   return gulp.src('test.js')
-         .pipe(mocha({reporter: 'spec'}));
-});
 
-gulp.task('shot', ['connect', 'webshot']);
+
+gulp.task('default', ['connect', 'webshot']);
 

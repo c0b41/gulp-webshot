@@ -25,7 +25,7 @@
     "gulp-connect": "~2.2.0"
   },
   "devDependencies": {
-    "gulp": "~3.5.2",
+    "gulp": "~3.8.10",
     "gulp-mocha": "~0.4.1"
   },
   "scripts": {
