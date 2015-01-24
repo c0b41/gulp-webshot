@@ -22,8 +22,9 @@ var gulp = require('gulp'),
 
 gulp.task('webshot', function() {
   return gulp.src('./Theme/**/**.html')
-        .pipe(webshot({ dest:'build/',root:'Theme'}))
+        .pipe(webshot({ dest:'build/',root:'Theme'}));
 })
+
 
 
 

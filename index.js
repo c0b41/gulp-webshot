@@ -11,12 +11,8 @@ module.exports = function(opt){
     if (!opt) {
             opt = {};
      }
-
-    if (opt.p === undefined) {
-        throw new gutil.PluginError('gulp-webshot', 'please connect port')
-    }
-
     
+    opt.p = 9000;    
 
     var app = connect() 
     app.use(serveStatic(opt.root));
@@ -25,13 +21,13 @@ module.exports = function(opt){
 
     return through.obj(function (file, enc, cb) {
 
-        if(!opt.p){
+        if(!opt.root){
             this.emit('error', new gutil.PluginError('gulp-webshot', 'please connect port'));
-            gutil.log(gutil.colors.red('Please connect port',' example  [p:3000]'));
+            gutil.log(gutil.colors.red('Please connect port',' root:"Theme" '));
             return cb();
         }
 
-        if(!opt.screenSize  &&  !opt.dest){
+        if(!opt.screenSize  &&  !opt.dest && !opt.dest){
             opt.screenSize = { width: 1440, height: 900 }
             opt.dest='snapshot/';
         }
@@ -47,13 +43,21 @@ module.exports = function(opt){
             return cb();
         }
 
+ 
+       if( opt.root ) {
+         var pathArr = path.dirname( file.path ).split( path.sep );
+         var baseIndex = pathArr.indexOf( opt.root );
+         var basepath = pathArr.slice(baseIndex + 1).join( path.sep ) + '/';
+       }
 
 
         
         var parsep =path.basename(file.relative);
         var name =path.basename(file.relative, '.html')
         var filename =opt.dest+'/'+name+'.png';
-        var url ='http://localhost:'+opt.p+'/'+parsep;
+        var url ='http://localhost:'+opt.p+'/'+basepath+parsep;
+
+        
 
 
              webshot(url, filename, opt,function(err,stream) { 
