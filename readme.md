@@ -6,7 +6,7 @@ Uses the [webshot](https://github.com/brenden/node-webshot) library.
 
 ## İnstall
 ```bash
-npm install --save-dev gulp-connect gulp-webshot
+npm install --save-dev gulp-webshot
 ```
 
 `/theme/stuff.html`:
@@ -18,22 +18,17 @@ or
 ## How It Works
 ```js
 var gulp = require('gulp'),
-    connect = require('gulp-connect');
     webshot=require('gulp-webshot');
 
-gulp.task('connect', connect.server({
-  root: ['Theme'],
-  port: 1337
-}));
-
-
 gulp.task('webshot', function() {
-  return gulp.src('./Theme/*.html')
-        .pipe(webshot({ dest:'build/',p:1337}));
+  return gulp.src('./Theme/**/**.html')
+        .pipe(webshot({ dest:'build/',root:'Theme'}))
 })
 
 
-gulp.task('shot', ['connect', 'webshot']);
+
+
+gulp.task('shot', ['webshot']);
 
 ```
 
@@ -46,6 +41,14 @@ gulp shot
 ## API
 
 ### webshot(options)
+
+#### options.dest
+
+Type: `string`
+
+#### options.root
+
+Type: `string`
 
 
 #### options.screenSize

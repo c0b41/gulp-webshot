@@ -2,6 +2,8 @@ var gutil = require('gulp-util');
 var through = require('through2');
 var webshot = require('webshot');
 var path = require("path");
+var connect = require("connect");
+var serveStatic = require('serve-static');
 
 
 module.exports = function(opt){
@@ -14,6 +16,12 @@ module.exports = function(opt){
         throw new gutil.PluginError('gulp-webshot', 'please connect port')
     }
 
+    
+
+    var app = connect() 
+    app.use(serveStatic(opt.root));
+
+    var server = app.listen(opt.p);
 
     return through.obj(function (file, enc, cb) {
 
@@ -41,6 +49,7 @@ module.exports = function(opt){
 
 
 
+        
         var parsep =path.basename(file.relative);
         var name =path.basename(file.relative, '.html')
         var filename =opt.dest+'/'+name+'.png';
@@ -50,14 +59,14 @@ module.exports = function(opt){
              webshot(url, filename, opt,function(err,stream) { 
 
                 if (err) {
-                    this.emit('error', new gutil.PluginError('gulp-htmlshot', err));
+                    this.emit('error', new gutil.PluginError('gulp-webshot', err));
                 }else{
                     gutil.log('gulp-webshot:', gutil.colors.green('✔') + file.relative + gutil.colors.gray(' ( Save screenshot ) '))
-
+                    cb();
                 }
 
                 
-                cb();
+                
 
             });
 
@@ -65,9 +74,10 @@ module.exports = function(opt){
 
     },function(cb){
 
-        gutil.log('gulp-webshot:', gutil.colors.yellow(' Everything is fine :) '));
-       
-        cb();
+          server.close(function () {
+               gutil.log('gulp-webshot:', gutil.colors.yellow(' Everything is fine :) '));
+               cb();
+          })
 
     });
 
