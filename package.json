@@ -1,6 +1,6 @@
 {
   "name": "gulp-webshot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webshot provides a simple API for taking webpage screenshots",
   "main": "index.js",
   "repository": {
@@ -19,12 +19,10 @@
   },
   "homepage": "https://github.com/ayhankuru/gulp-webshot",
   "dependencies": {
-    "through2": "~0.6.3",
-    "gulp-util": "~3.0.2",
-    "webshot": "~0.15.3",
-    "connect": "~3.3.4",
-    "serve-static": "~1.8.1"
-  },
-  "devDependencies": {
-    "gulp": "~3.8.10"
+    "connect": "^3.3.4",
+    "gulp-util": "^3.0.3",
+    "serve-static": "^1.8.1",
+    "through2": "^0.6.3",
+    "webshot": "^0.15.4"
+  }
 }

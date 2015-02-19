@@ -12,7 +12,7 @@ module.exports = function(opt){
             opt = {};
      }
     
-    opt.p = 9000;    
+    opt.p = opt.p || 9000 ;  
 
     var app = connect() 
     app.use(serveStatic(opt.root));
@@ -22,8 +22,8 @@ module.exports = function(opt){
     return through.obj(function (file, enc, cb) {
 
         if(!opt.root){
-            this.emit('error', new gutil.PluginError('gulp-webshot', 'please connect port'));
-            gutil.log(gutil.colors.red('Please connect port',' root:"Theme" '));
+            this.emit('error', new gutil.PluginError('gulp-webshot', 'Please root directory'));
+            gutil.log(gutil.colors.red('Please root directory',' root:"Theme" '));
             return cb();
         }
 
