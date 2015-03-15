@@ -54,7 +54,7 @@ module.exports = function(opt){
         
         var parsep =path.basename(file.relative);
         var name =path.basename(file.relative, '.html')
-        var filename =opt.dest+'/'+name+'.png';
+        var filename =opt.dest+'/'+basepath+name+'.png';
         var url ='http://localhost:'+opt.p+'/'+basepath+parsep;
 
         
