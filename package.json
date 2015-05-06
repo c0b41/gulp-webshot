@@ -23,6 +23,9 @@
     "gulp-util": "^3.0.3",
     "serve-static": "^1.8.1",
     "through2": "^0.6.3",
-    "webshot": "git://github.com/ayhankuru/node-webshot.git#dev"
+    "@cobaimelan/webshot": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11"
   }
 }

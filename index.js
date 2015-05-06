@@ -65,7 +65,7 @@ module.exports = function(opt){
                 if (err) {
                     this.emit('error', new gutil.PluginError('gulp-webshot', err));
                 }else{
-                    gutil.log('gulp-webshot:', gutil.colors.green('✔') + file.relative + gutil.colors.gray(' ( Save screenshot ) '))
+                    gutil.log('gulp-webshot:', gutil.colors.green(' ✔ ') + file.relative + gutil.colors.gray(' ( Save screenshot ) '))
                     cb();
                 }
 

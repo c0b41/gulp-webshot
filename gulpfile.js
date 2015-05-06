@@ -1,13 +1,13 @@
 var gulp = require('gulp'),
-    webshot=require('gulp-webshot');
+    webshot=require('./index.js');
 
 gulp.task('webshot', function() {
-  return gulp.src('./Theme/**/**.html')
-        .pipe(webshot({ dest:'build/',root:'Theme'}));
+  return gulp.src('./theme/*.html')
+        .pipe(webshot({ dest:'build/',root:'theme'}));
 })
 
 
 
 
 
-gulp.task('shot', ['webshot']);
+gulp.task('default', ['webshot']);
