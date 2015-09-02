@@ -4,10 +4,7 @@ var gulp = require('gulp'),
 gulp.task('webshot', function() {
   return gulp.src('./theme/*.html')
         .pipe(webshot({ dest:'build/',root:'theme'}));
-})
-
-
-
+});
 
 
 gulp.task('default', ['webshot']);
