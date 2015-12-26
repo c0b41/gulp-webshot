@@ -58,7 +58,12 @@ module.exports = function(opt) {
 
     var parsep = path.basename(file.relative);
     var name = path.basename(file.relative, '.html');
-    var filename = path.join(opt.dest, basepath, name + '.png');
+    var filename = path.join(basepath, name + '.png');
+    if(opt.flatten) {
+      separator = /[._-a-zA-Z0-9]+/.test(opt.flatten) ? opt.flatten : '__';
+      filename = filename.replace(/\//g, separator);
+    }
+    filename = path.join(opt.dest, filename);
     var relativeFilePath = path.join(path.sep, basepath, parsep);
     var urlPath = url.resolve('http://localhost:' + opt.p, relativeFilePath);
 

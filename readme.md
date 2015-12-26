@@ -68,8 +68,11 @@ Type: `object`
     height: `int`
 
 
+#### options.flatten
 
+Type: `boolean|string`
 
+Flatten out captures.
 
 more options checkout [webshot options](https://github.com/brenden/node-webshot#options).
 
