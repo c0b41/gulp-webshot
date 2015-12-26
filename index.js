@@ -66,11 +66,12 @@ module.exports = function(opt) {
     webshot(urlPath, filename, opt, function(err, stream) {
       if (err) {
         this.emit('error', new gutil.PluginError('gulp-webshot', err));
+        server.close();
       } else {
         gutil.log('gulp-webshot:', gutil.colors.green(' ✔ ') + file.relative + gutil.colors.gray(' ( Save screenshot ) '));
         cb();
       }
-    });
+    }.bind(this));
 
     this.push(file);
 
