@@ -21,11 +21,11 @@ module.exports = function(opt) {
   var server = app.listen(opt.p);
 
 
-  return through.obj(function(file, enc, cb) {
+  return through.obj(function(file, enc, next) {
     if (!opt.root) {
       this.emit('error', new gutil.PluginError('gulp-webshot', 'Please root directory'));
       gutil.log(gutil.colors.red('Please root directory', ' root:"Theme" '));
-      return cb();
+      return next();
     }
 
     if (!opt.screenSize && !opt.dest && !opt.dest) {
@@ -39,12 +39,12 @@ module.exports = function(opt) {
 
     if (file.isNull()) {
       this.push(file);
-      return cb();
+      return next();
     }
 
     if (file.isStream()) {
       this.emit('error', new gutil.PluginError('gulp-webshot', 'Streaming not supported'));
-      return cb();
+      return next();
     }
 
 
@@ -74,17 +74,17 @@ module.exports = function(opt) {
         server.close();
       } else {
         gutil.log('gulp-webshot:', gutil.colors.green(' ✔ ') + file.relative + gutil.colors.gray(' ( Save screenshot ) '));
-        cb();
+        next();
       }
     }.bind(this));
 
     this.push(file);
 
-  }, function(cb) {
+}, function(done) {
 
     server.close(function() {
       gutil.log('gulp-webshot:', gutil.colors.yellow(' Everything is fine :) '));
-      cb();
+      done();
     });
 
   });

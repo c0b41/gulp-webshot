@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    webshot=require('./index.js');
+    webshot = require('./');
 
 gulp.task('webshot', function() {
   return gulp.src('./theme/*.html')
@@ -7,4 +7,4 @@ gulp.task('webshot', function() {
 });
 
 
-gulp.task('default', ['webshot']);
+gulp.task('default',gulp.series('webshot'));
