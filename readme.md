@@ -72,6 +72,11 @@ Type: `object`
 
 Type: `boolean|string`
 
+#### options.streamType
+
+Type: `string`
+Default: `png`
+
 Flatten out captures.
 
 more options checkout [webshot options](https://github.com/brenden/node-webshot#options).
