@@ -47,6 +47,10 @@ gulp shot
 
 Type: `string`
 
+#### options.filename
+
+Type: `string`
+
 #### options.root
 
 Type: `string`
